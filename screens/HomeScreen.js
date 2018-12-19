@@ -7,15 +7,22 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Button,
+  Alert
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
+import UserDeviceInfo from '../components/deviceinfo';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+
+  _onPressButton() {
+    Alert.alert('You tapped "Learn More"')
+  }
 
   render() {
     return (
@@ -24,9 +31,7 @@ export default class HomeScreen extends React.Component {
           <View style={styles.welcomeContainer}>
             <Image
               source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
+                require('../assets/images/PsyberGuideFull.png')
               }
               style={styles.welcomeImage}
             />
@@ -35,15 +40,17 @@ export default class HomeScreen extends React.Component {
           <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
 
-            <Text style={styles.getStartedText}>Get started by opening</Text>
-
-            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
-            </View>
 
             <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
+              Welcome to PsyberGuide!
             </Text>
+            <Button
+               onPress={this._onPressButton}
+                title="Learn More"
+                color="#841584"
+                accessibilityLabel="Learn more about PsyberGuide"
+              />
+              <UserDeviceInfo />
           </View>
 
           <View style={styles.helpContainer}>
@@ -119,9 +126,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   welcomeImage: {
-    width: 100,
+    width: '90%',
     height: 80,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     marginTop: 3,
     marginLeft: -10,
   },

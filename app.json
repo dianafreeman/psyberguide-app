@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "research.psyberguide.org",
-    "slug": "research.psyberguide.org",
+    "slug": "psyberguide-app",
     "privacy": "public",
     "sdkVersion": "31.0.0",
     "platforms": [
